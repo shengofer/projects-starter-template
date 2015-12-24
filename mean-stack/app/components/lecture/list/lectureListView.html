@@ -1,0 +1,40 @@
+<div class="listWidget" data-ng-cloak>
+    <div class="inline-block-header">
+        <h1 class="md-display-2">{{lectureListCtrl.getSectionTitle()}}:</h1>
+    </div>
+    <md-button class="md-fab md-primary md-fab-bottom-right" aria-label="Add new lecture" ui-sref="addLecture">
+        <md-icon md-svg-icon="core:add"></md-icon>
+    </md-button>
+    <type-filter items="lectureListCtrl.types" on-type-click="lectureListCtrl.getLectures(options)"></type-filter>
+    <header class="data-table_header" layout="row">
+        <div class="data-table_head-cell" flex="auto" layout-padding>Title</div>
+        <div class="data-table_head-cell" flex="20" layout-padding>Duration</div>
+        <div class="data-table_head-cell" flex="20" layout-padding>Type</div>
+        <div class="data-table_head-cell" flex="10" layout-padding>&nbsp;</div>
+        <div class="data-table_head-cell" flex="10" layout-padding>&nbsp;</div>
+        <div class="data-table_head-cell" flex="10" layout-padding>&nbsp;</div>
+    </header>
+    <md-virtual-repeat-container id="vertical-container" class="data-table pagginator-container" ng-show="true">
+        <div md-virtual-repeat="lecture in lectureListCtrl.lectures" md-on-demand
+             class="data-table_row repeated-item" layout="row" flex>
+            <div class="data-table_cell" flex="auto" layout-padding ng-bind="lecture.title"></div>
+            <div class="data-table_cell" flex="20" layout-padding ng-bind="lecture.duration"></div>
+            <div class="data-table_cell" flex="20" layout-padding ng-bind="lecture.type"></div>
+            <div class="data-table_cell" flex="10">
+                <md-button aria-label="Delete lecture">
+                    <md-icon md-svg-icon="core:delete"></md-icon>
+                </md-button>
+            </div>
+            <div class="data-table_cell" flex="10">
+                <md-button aria-label="Edit lecture" ui-sref="editLecture({ id: lecture._id })">
+                    <md-icon md-svg-icon="core:mode-edit"></md-icon>
+                </md-button>
+            </div>
+            <div class="data-table_cell" flex="10">
+                <md-button aria-label="See description of lecture">
+                    <md-icon md-svg-icon="core:description"></md-icon>
+                </md-button>
+            </div>
+        </div>
+    </md-virtual-repeat-container>
+</div>

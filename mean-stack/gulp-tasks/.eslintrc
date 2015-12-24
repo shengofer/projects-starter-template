@@ -1,0 +1,12 @@
+{
+  "rules": {
+    //Best practices
+    "no-param-reassign": 1,
+
+    //ES6
+    "no-var": 0,
+
+    //Strict
+    "strict": 0
+  }
+}

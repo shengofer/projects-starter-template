@@ -1,0 +1,7 @@
+<nav class="top-nav">
+    <ul>
+        <li ng-repeat="item in navigationCtrl.items" ng-class="{'active' : navigationCtrl.isCurrent(item)}">
+            <a ng-href="#{{::item.url}}" ng-click="navigationCtrl.reloading(item)">{{::item.displayName}}</a>
+        </li>
+    </ul>
+</nav>

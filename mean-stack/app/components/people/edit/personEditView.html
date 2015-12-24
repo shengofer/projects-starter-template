@@ -1,0 +1,64 @@
+<div data-ng-cloak>
+    <md-content layout-padding="">
+        <form layout="column" name="personForm" novalidate class="person-details-form">
+            <h1>{{::personEditCtrl.pageTitle}}</h1>
+            <md-input-container flex="">
+                <label>Name</label>
+                <input ng-model="personEditCtrl.person.name" name="name" md-maxlength="150" ng-required="true">
+
+                <div class="validation-messages"
+                     ng-messages="personForm.name.$error"
+                     ng-show="personForm.name.$touched && personForm.name.$invalid"
+                     role="alert">
+                    <div ng-message="required">Name is required</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="">
+                <label>E-mail</label>
+                <input ng-model="personEditCtrl.person.email" name="email" md-maxlength="150" ng-required="true"
+                       type="email">
+
+                <div class="validation-messages"
+                     ng-messages="personForm.email.$error"
+                     ng-show="personForm.email.$touched && personForm.email.$invalid"
+                     role="alert">
+                    <div ng-message="required">E-mail is required</div>
+                </div>
+            </md-input-container>
+            <section layout="row">
+                <md-input-container flex="10" class="checkbox-group">
+                    <label class="md-no-float">Is available as </label>
+                    <md-checkbox
+                        ng-repeat="category in personEditCtrl.categories"
+                        layout="row"
+                        ng-model="personEditCtrl.person.availableAs[category]"
+                        ng-true-value="true"
+                        aria-label="{{category}}">
+                        {{::category}}
+                    </md-checkbox>
+                </md-input-container>
+                <md-input-container flex="60" flex-offset="30" class="checkbox-group">
+                    <label class="md-no-float">Group Activity</label>
+                    <md-list>
+                        <md-list-item ng-repeat="group in personEditCtrl.person.groupActivity"
+                                      layout="row"
+                                      aria-label="{{::group.name}}"
+                                      ui-sref="groupDetails({groupId: group._id})">
+                            <div flex="10">
+                                <md-icon ng-repeat="role in group.roles track by $index"
+                                         md-svg-icon="people:{{role}}"
+                                         aria-label="{{role}}"></md-icon>
+                            </div>
+                            <div flex><span>{{::group.name}}</span></div>
+                        </md-list-item>
+                    </md-list>
+                </md-input-container>
+            </section>
+            <section layout="row">
+                <md-button class="md-primary" ng-click="personEditCtrl.submit()" ng-disabled="personForm.$invalid"
+                           aria-label="Submit" translate="submit"></md-button>
+                <md-button type="button" aria-label="Cancel" ui-sref="people" translate="cancel"></md-button>
+            </section>
+        </form>
+    </md-content>
+</div>

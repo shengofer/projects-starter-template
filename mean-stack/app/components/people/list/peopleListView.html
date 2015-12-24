@@ -1,0 +1,49 @@
+<article class="listWidget" data-ng-cloak>
+    <md-button class="md-fab md-primary md-fab-bottom-right" aria-label="Add new person" ui-sref="addPerson">
+        <md-icon md-svg-icon="core:add"></md-icon>
+    </md-button>
+    <h1 class="md-display-2">{{peopleListCtrl.getSectionTitle()}}:</h1>
+
+    <section layout="row">
+        <md-button ng-click="isShown = !isShown" aria-label="Search menu" class="md-fab md-primary">
+            <md-icon md-svg-icon="core:search"></md-icon>
+        </md-button>
+        <section layout="row" class="show-hide" ng-show="isShown">
+            <type-filter items="peopleListCtrl.availableAs"
+                         on-type-click="peopleListCtrl.getPeople()"></type-filter>
+            <md-input-container>
+                <label>Enter Name</label>
+                <input ng-change="peopleListCtrl.getPeopleWithDebounce()"
+                       ng-model="peopleListCtrl.PeopleListService.$stateParams.query"
+                       aria-label="Enter Name">
+                </input>
+            </md-input-container>
+        </section>
+    </section>
+    <header class="data-table_header" layout="row">
+        <div class="data-table_head-cell" flex="auto" layout-padding>Name</div>
+        <div class="data-table_head-cell" flex="15" layout-padding>Available as</div>
+        <div class="data-table_head-cell data-table_action-cell" flex="20" layout-padding>Actions</div>
+    </header>
+    <md-virtual-repeat-container id="vertical-container" class="data-table pagginator-container">
+        <div md-virtual-repeat="person in peopleListCtrl.people" md-on-demand
+             class="data-table_row repeated-item" layout="row" flex ng-show="person">
+            <div class="data-table_cell" flex="auto" layout-padding>{{person.name}}</div>
+            <div class="data-table_cell" flex="15" layout-padding>
+                <md-icon ng-repeat="status in person.availableAs track by $index"
+                         md-svg-icon="people:{{status}}"
+                         aria-label="{{status}}"></md-icon>
+            </div>
+            <div class="data-table_cell" flex="10">
+                <md-button ng-href="#/people/{{person._id}}" aria-label="See description of person">
+                    <md-icon md-svg-icon="core:description"></md-icon>
+                </md-button>
+            </div>
+            <div class="data-table_cell" flex="10">
+                <md-button ui-sref="editPerson({personId: person._id})" aria-label="Edit person">
+                    <md-icon md-svg-icon="core:mode-edit"></md-icon>
+                </md-button>
+            </div>
+        </div>
+    </md-virtual-repeat-container>
+</article>

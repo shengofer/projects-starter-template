@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "extends": "airbnb/base",
+  "env": {
+    "jasmine": true,
+    "protractor": true
+  },
+  "globals": {
+    "angular": true,
+    "module": true,
+    "inject": true
+  },
+  "ecmaFeatures": {
+    "modules": false
+  },
+  "rules": {
+    //Best practices
+
+    //Errors
+    "comma-dangle": [2, "never"],
+
+    //ES6
+    "no-var": 1,
+    "prefer-const": 0,
+
+    //Legacy
+
+    //Node
+
+    //Strict
+    "strict": [1, "function"],
+
+    //Style
+    "indent": [2, 4],
+    "func-names": [0],
+    "new-cap": [2, {"capIsNewExceptions": ["express.Router"]}],
+    "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }],
+
+    //Variables
+    "no-use-before-define": 1,
+    "no-shadow": 1
+  }
+}

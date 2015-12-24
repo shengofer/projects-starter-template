@@ -1,0 +1,8 @@
+{
+  "rules": {
+
+    //Strict
+    "strict": [1, "global"],
+    "no-console": 0
+  }
+}

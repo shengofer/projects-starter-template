@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>curator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700" type="text/css">
+    <link rel="stylesheet" href="/build/vendors.css">
+    <link rel="stylesheet" href="/build/mentoringApp.css">
+    <script src="/build/vendors.js"></script>
+    <script src="/build/mentoringApp.js"></script>
+</head>
+<body ng-app="mentoringApp">
+
+<div flex layout="column" class="main">
+    <ng-include src="'layouts/header.html'"></ng-include>
+    <div flex layout="row" id="main">
+        <md-content flex id="content">
+            <ui-view class="content-area" id="content-area"></ui-view>
+        </md-content>
+    </div>
+</div>
+
+</body>
+</html>
