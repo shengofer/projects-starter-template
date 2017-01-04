@@ -1,0 +1,9 @@
+# node folder
+/node
+/node_modules
+
+.env
+.classpath
+.project
+
+.idea
